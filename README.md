@@ -4,9 +4,9 @@
 
 In this mod, we will add the following games to the gambling den:
 
-- [ ] Xenon Invaders
-- [ ] Ride the Tide
-- [ ] Traveling Teladi
+- [ ] Xenon Invaders (Slot Machine)
+- [ ] Ride the Tide (Roulette) 
+- [ ] Traveling Teladi (Blackjack)
 
 Out of scope, but wanted additions:
 
