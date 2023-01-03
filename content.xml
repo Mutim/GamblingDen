@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<content id="GamblingDen"
+name="Gambling Den"
+author="Mutim"
+version="1"
+date="2022-31-12"
+save="false"
+enabled="1">
+
+<text language="44"
+description="Gambling Den&#13;&#10;
+&#13;&#10;
+Casino Games:&#13;&#10;
+============&#13;&#10;
+Xenon Invaders,&#13;&#10;
+Ride the Tide,&#13;&#10;
+Traveling Teladi,&#13;&#10;
+"/>
+</content>
