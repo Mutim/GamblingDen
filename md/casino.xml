@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mdscript name="GamblingDen" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <cues>
+    <cue name="AddCasinoOption" instantiate="true">
+      <conditions>
+        <check_value value="true"/>
+      </conditions>
+      <actions>
+        <add_player_option text="'Gamble'" onselect="StartGamble"/>
+      </actions>
+    </cue>
+
+    <cue name="StartGamble">
+      <actions>
+        <do_if value="player.money ge 1000">
+          <set_value name="$roll" exact="random(0,100)"/>
+          
+          <do_if value="$roll gt 60">
+            <add_money amount="2000"/>
+            <show_help text="'You won!'"/>
+          </do_if>
+          
+          <do_else>
+            <remove_money amount="1000"/>
+            <show_help text="'You lost!'"/>
+          </do_else>
+        </do_if>
+      </actions>
+    </cue>
+  </cues>
+
+</mdscript>
