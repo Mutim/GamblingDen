@@ -2,6 +2,43 @@
 <mdscript name="GamblingDen" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 
   <cues>
+    <cue name="RegisterAstridSpawnHotkey" instantiate="true">
+      <conditions>
+        <event_cue_signalled cue="md.Hotkey_API.Reloaded" />
+      </conditions>
+      <actions>
+        <signal_cue_instantly
+          cue="md.Hotkey_API.Register_Action"
+          param="table[
+            $id = 'gamblingden_spawn_astrid',
+            $onPress = SpawnAstrid,
+            $contexts = ['walking'],
+          ]"/>
+        <signal_cue_instantly
+          cue="md.Hotkey_API.Register_Key"
+          param="table[$key='shift b', $id='gamblingden_spawn_astrid']"/>
+      </actions>
+    </cue>
+
+    <cue name="SpawnAstrid" instantiate="true">
+      <actions>
+        <do_if value="player.iswalking">
+          <set_value name="$spawnsector" exact="player.sector"/>
+          <set_value name="$playerfaction" exact="player.primaryfaction"/>
+          <create_ship
+            name="$astrid"
+            macro="ship_spl_xl_yacht_01_a_macro"
+            sector="$spawnsector"
+            owner="$playerfaction" />
+          <show_help text="'Astrid spawned and assigned to the player.'"/>
+        </do_if>
+
+        <do_else>
+          <show_help text="'Astrid can only be spawned while walking on a station platform.'"/>
+        </do_else>
+      </actions>
+    </cue>
+
     <cue name="AddCasinoOption" instantiate="true">
       <conditions>
         <check_value value="true"/>
@@ -15,12 +52,12 @@
       <actions>
         <do_if value="player.money ge 1000">
           <set_value name="$roll" exact="random(0,100)"/>
-          
+
           <do_if value="$roll gt 60">
             <add_money amount="2000"/>
             <show_help text="'You won!'"/>
           </do_if>
-          
+
           <do_else>
             <remove_money amount="1000"/>
             <show_help text="'You lost!'"/>
